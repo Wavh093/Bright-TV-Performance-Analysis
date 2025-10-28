@@ -8,7 +8,7 @@ import unicodedata
 import re
 
 # Load data
-file_path = 'Bright TV -Dataset (1) (1).xlsx'
+file_path = 'Project Input\Bright TV -Dataset (1) (1).xlsx'
 
 # load into data frame
 excel = pd.ExcelFile(file_path)
@@ -141,7 +141,7 @@ if 'AGE' in pdf.columns:
     )
 
 # exporting the data
-vdf.to_csv("BrightTV_Viewership_Cleaned.csv", index=False)
-pdf.to_csv("BrightTV_UserProfiles_Cleaned.csv", index=False)
+vdf.to_csv("Project Input\BrightTV_Viewership_Cleaned.csv", index=False)
+pdf.to_csv("Project Input\BrightTV_UserProfiles_Cleaned.csv", index=False)
 
 print("\n✅ Cleaned files saved successfully!")
