@@ -140,8 +140,37 @@ if 'AGE' in pdf.columns:
         labels=['<18', '18-24', '25-34', '35-44', '45-54', '55-64', '65+']
     )
 
+
+# renaming the two userID columns in the viewership table
+
+# --- Detect and rename USER_ID columns properly ---
+user_id_cols = [col for col in vdf.columns if "USERID" in col.upper()]
+print(len(user_id_cols))
+
+
+if len(user_id_cols) == 0:
+    print("No USERID columns found in viewership data.")
+
+elif len(user_id_cols) == 1:
+    print(f"Found only one USERID column: {user_id_cols[0]}")
+    # Standardize it to USER_ID
+    vdf.rename(columns={user_id_cols[0]: "USERID"}, inplace=True)
+
+else:
+   # When there are multiple user ID columns
+    main_id = user_id_cols[0]
+    secondary_id = user_id_cols[1]
+    
+    # Only rename if they’re different columns
+    if main_id != secondary_id:
+        vdf.rename(columns={main_id: "USER_ID"}, inplace=True)
+        vdf.rename(columns={secondary_id: "USER_ID2"}, inplace=True)
+        print(f"Renamed '{main_id}' → USER_ID and '{secondary_id}' → USER_ID2")
+    else:
+        print("Both USER_ID columns appear to have the same name — check Excel headers.")
+
 # exporting the data
 vdf.to_csv("Project Input\BrightTV_Viewership_Cleaned.csv", index=False)
 pdf.to_csv("Project Input\BrightTV_UserProfiles_Cleaned.csv", index=False)
 
-print("\n✅ Cleaned files saved successfully!")
+print("\n Cleaned files saved successfully!")
