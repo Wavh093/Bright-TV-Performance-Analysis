@@ -165,7 +165,7 @@ else:
     if main_id != secondary_id:
         vdf.rename(columns={main_id: "USER_ID"}, inplace=True)
         vdf.rename(columns={secondary_id: "USER_ID2"}, inplace=True)
-        print(f"Renamed '{main_id}' → USER_ID and '{secondary_id}' → USER_ID2")
+        print(f"Renamed '{main_id}' USER_ID and '{secondary_id}' USER_ID2")
     else:
         print("Both USER_ID columns appear to have the same name — check Excel headers.")
 
