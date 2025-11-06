@@ -8,7 +8,7 @@ import unicodedata
 import re
 
 # Load data
-file_path = 'Project Input\Bright TV -Dataset (1) (1).xlsx'
+file_path = 'Project Input\Raw Data.xlsx'
 
 # load into data frame
 excel = pd.ExcelFile(file_path)
@@ -170,7 +170,7 @@ else:
         print("Both USER_ID columns appear to have the same name — check Excel headers.")
 
 # exporting the data
-vdf.to_csv("Project Input\BrightTV_Viewership_Cleaned.csv", index=False)
-pdf.to_csv("Project Input\BrightTV_UserProfiles_Cleaned.csv", index=False)
+vdf.to_csv("Project Output\BTV_Viewership_Cleaned.csv", index=False)
+pdf.to_csv("Project Output\BTV_UserProfiles_Cleaned.csv", index=False)
 
 print("\n Cleaned files saved successfully!")
